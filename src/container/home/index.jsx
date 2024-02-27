@@ -17,6 +17,7 @@ import {
 import ResizableBox from "../../components/ResizableBox";
 import Card from "../../components/Card";
 import NumberBadge from "../../components/NumberBadge";
+import { getDefaultDynamicWH } from "../../utils";
 
 const Home = () => {
   const [sortedCardData, setSortedCardData] = useState([1, 2, 3]);
@@ -64,7 +65,7 @@ const Home = () => {
           >
             {sortedCardData.map((sd) => (
               <div key={sd}>
-                <ResizableBox id={sd}>
+                <ResizableBox dWidth={getDefaultDynamicWH(sd).width} dHeight={getDefaultDynamicWH(sd).height}>
                   <Card id={sd} />
                 </ResizableBox>
               </div>
@@ -81,7 +82,7 @@ const Home = () => {
   );
 };
 
-const dragWrapperStyle = { display: "flex", flexWrap: "wrap", overflowY: 'hidden' };
+const dragWrapperStyle = { display: "flex", flexWrap: "wrap", overflowY: 'hidden', justifyContent: 'center', margin: '10px 0' };
 
 const dragNotFoundStyle = { backgroundColor: "red" };
 
